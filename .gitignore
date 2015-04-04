@@ -1,0 +1,6 @@
+*.dll
+*.suo
+MeteorShower/bin/MeteorShower.pdb
+*.js
+*.map
+*.user
