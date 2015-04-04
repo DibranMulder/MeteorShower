@@ -1,6 +1,8 @@
 *.dll
 *.suo
-MeteorShower/bin/MeteorShower.pdb
+MeteorShower/bin/
+MeteorShower/obj/
 *.js
 *.map
 *.user
+*.pdb
