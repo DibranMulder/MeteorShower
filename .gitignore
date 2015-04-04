@@ -2,7 +2,8 @@
 *.suo
 MeteorShower/bin/
 MeteorShower/obj/
-*.js
+MeteorShower/js/*.js
+MeteorShower/js/objects/*.js
 *.map
 *.user
 *.pdb
