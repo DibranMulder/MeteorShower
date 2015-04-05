@@ -1,15 +1,23 @@
-﻿var player = new Player(stage, 400, 265);
-var meteor = new Meteor(stage, 100, -100);
+﻿function createMeteor() {
+    var randomX = Math.floor(Math.random() * 500) + 1;
+    var meteor = new Meteor(stage, randomX, -100);
+    drawables.push(meteor);
+};
 
+var player = new Player(stage, 400, 265);
 var drawables: IDrawable[] = [];
 drawables.push(player);
-drawables.push(meteor);
+
+createMeteor();
 
 requestAnimFrame(animate);
 function animate() {
     var animationAgeInMs = new Date().getTime();
     for (var i = 0; i < drawables.length; i++) {
-        drawables[i].paint(animationAgeInMs);
+        if (!drawables[i].paint(animationAgeInMs)) {
+            drawables.splice(i, 1);
+            createMeteor();
+        }
     }
     // render the stage   
     renderer.render(stage);

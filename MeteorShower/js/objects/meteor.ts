@@ -46,30 +46,33 @@
         explosionAnimation.position.y = this.currentAnimation.position.y;
         stage.removeChild(this.currentAnimation);
 
+        this.frameNumber = -1;
         this.currentAnimation = explosionAnimation;
         this.amountOfFrames = 100;
         this.msPerFrame = 1000 / 120;
 
-        stage.addChild(explosionAnimation);
+        stage.addChild(this.currentAnimation);
         
-        explosionAnimation.onComplete = () => {
-            debugger;
-            stage.removeChild(explosionAnimation);
-            drawables.slice(1);
-        };
         return explosionAnimation;
     }
 
+    private frameNumber: number = -1;
     public paint(animationAgeInMs: number): boolean {
-        this.currentAnimation.gotoAndStop((Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames));
+        var tmpFrameNumber = this.frameNumber;
+        this.frameNumber = Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames;
+        this.currentAnimation.gotoAndStop(this.frameNumber);
         if (!this.exploding) {
             if (this.currentAnimation.position.y <= 225) {
                 this.currentAnimation.position.y += 2;
-                return true;
             } else {
                 this.exploding = true;
                 this.explode(stage);
             }
+            
+        } else if (this.frameNumber < tmpFrameNumber) {
+            stage.removeChild(this.currentAnimation);
+            return false;
         }
+        return true;
     }
 }
