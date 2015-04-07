@@ -18,7 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
-    <Content Include="images\explode.png" />
+    <Content Include="images\explosion.png" />
     <Content Include="images\level1.png" />
     <Content Include="images\meteor_small.png" />
     <Content Include="images\zelda_basic_small.png" />

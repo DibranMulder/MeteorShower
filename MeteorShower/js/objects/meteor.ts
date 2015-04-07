@@ -35,15 +35,15 @@
         var explosionTextures: PIXI.Texture[] = [];
         for (var i = 0; i < 10; i++) {
             for (var g = 0; g < 10; g++) {
-                var explosionTexture = new PIXI.Texture(explosion, new PIXI.Rectangle(g * 128, i * 128, 128, 128));
+                var explosionTexture = new PIXI.Texture(explosion, new PIXI.Rectangle(g * 96, i * 96, 96, 96));
                 // TODO: add to texture cache.
                 explosionTextures.push(explosionTexture);
             }
         }
         var explosionAnimation = new PIXI.MovieClip(explosionTextures);
         explosionAnimation.visible = true;
-        explosionAnimation.position.x = this.currentAnimation.position.x;
-        explosionAnimation.position.y = this.currentAnimation.position.y;
+        explosionAnimation.position.x = this.currentAnimation.position.x - 19;//(96 - 58) \ 2 
+        explosionAnimation.position.y = this.currentAnimation.position.y + 4; //100-96
         stage.removeChild(this.currentAnimation);
 
         this.frameNumber = -1;
