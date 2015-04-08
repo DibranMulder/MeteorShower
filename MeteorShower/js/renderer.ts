@@ -10,6 +10,9 @@ drawables.push(player);
 
 createMeteor();
 
+var spear = new Spear(stage, -100, 200);
+drawables.push(spear);
+
 requestAnimFrame(animate);
 function animate() {
     var animationAgeInMs = new Date().getTime();
