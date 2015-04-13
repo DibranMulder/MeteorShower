@@ -19,6 +19,7 @@
             oneWayAnimation.visible = false;
             oneWayAnimation.position.x = x;
             oneWayAnimation.position.y = y;
+            applyRatio(oneWayAnimation, ratio);
             oneWayAnimation.stop();
             stage.addChild(oneWayAnimation);
             this.allDirectionsAnimations.push(oneWayAnimation)

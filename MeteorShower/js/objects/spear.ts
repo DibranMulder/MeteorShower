@@ -6,6 +6,7 @@
         this.spearSprite = new PIXI.Sprite(spearTexture);
         this.spearSprite.position.x = x;
         this.spearSprite.position.y = y;
+        applyRatio(this.spearSprite, ratio);
         stage.addChild(this.spearSprite);
     }
 

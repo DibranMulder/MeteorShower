@@ -1,8 +1,4 @@
 ﻿class Meteor implements IDrawable {
-    public amountOfFrames: number;
-    // 24 is the fps
-    public msPerFrame: number;
-
     private static _meteorTextures: PIXI.Texture[];
     public static get meteorTextures(): PIXI.Texture[] {
         if (!Meteor._meteorTextures) {
@@ -24,9 +20,11 @@
         this.currentAnimation.position.x = x;
         this.currentAnimation.position.y = -100;
         this.currentAnimation.visible = true;
-        this.amountOfFrames = 11;
-        this.msPerFrame = 1000 / 12;
+        this.currentAnimation.animationSpeed = 0.25;
+              
+        applyRatio(this.currentAnimation, ratio);
         stage.addChild(this.currentAnimation);
+        this.currentAnimation.play();
     }
 
     private exploding: boolean = false;
@@ -41,38 +39,41 @@
             }
         }
         var explosionAnimation = new PIXI.MovieClip(explosionTextures);
-        explosionAnimation.visible = true;
-        explosionAnimation.position.x = this.currentAnimation.position.x - 19;//(96 - 58) \ 2 
-        explosionAnimation.position.y = this.currentAnimation.position.y + 4; //100-96
+        applyRatio(explosionAnimation, ratio);
+        explosionAnimation.loop = false;
+        explosionAnimation.animationSpeed = 2;
+        explosionAnimation.position.x = this.currentAnimation.position.x - ((explosionAnimation.width - this.currentAnimation.width) / 2);
+        explosionAnimation.position.y = this.currentAnimation.position.y + (this.currentAnimation.height - explosionAnimation.height);
+        explosionAnimation.play();
+        explosionAnimation.onComplete = () => {
+            // After the stack is completed
+            setTimeout(() => {
+                stage.removeChild(this.currentAnimation);
+                this.currentAnimation = null;
+            }, 0);
+        };
+        
         stage.removeChild(this.currentAnimation);
 
-        this.frameNumber = -1;
         this.currentAnimation = explosionAnimation;
-        this.amountOfFrames = 100;
-        this.msPerFrame = 1000 / 120;
-
         stage.addChild(this.currentAnimation);
-        
+               
         return explosionAnimation;
     }
 
-    private frameNumber: number = -1;
     public paint(animationAgeInMs: number): boolean {
-        var tmpFrameNumber = this.frameNumber;
-        this.frameNumber = Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames;
-        this.currentAnimation.gotoAndStop(this.frameNumber);
         if (!this.exploding) {
-            if (this.currentAnimation.position.y <= 225) {
-                this.currentAnimation.position.y += 2;
+            if (this.currentAnimation.position.y <= (225 * ratio)) {
+                this.currentAnimation.position.y += (2 * ratio);
             } else {
                 this.exploding = true;
                 this.explode(stage);
             }
-            
-        } else if (this.frameNumber < tmpFrameNumber) {
-            stage.removeChild(this.currentAnimation);
+        } 
+        if (this.currentAnimation == null) {
             return false;
         }
+
         return true;
     }
 }
