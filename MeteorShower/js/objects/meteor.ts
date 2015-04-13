@@ -2,7 +2,7 @@
     private static _meteorTextures: PIXI.Texture[];
     public static get meteorTextures(): PIXI.Texture[] {
         if (!Meteor._meteorTextures) {
-            var meteor = PIXI.Texture.fromImage("../../images/meteor_small.png").baseTexture;
+            var meteor = PIXI.Texture.fromImage("images/meteor_small.png").baseTexture;
             Meteor._meteorTextures = [];
             for (var g = 0; g < 11; g++) {
                 var meteorTexture = new PIXI.Texture(meteor, new PIXI.Rectangle(g * 58, 0, 58, 100));
@@ -29,7 +29,7 @@
 
     private exploding: boolean = false;
     public explode(stage): PIXI.MovieClip {
-        var explosion = PIXI.Texture.fromImage("../../images/explosion.png").baseTexture;
+        var explosion = PIXI.Texture.fromImage("images/explosion.png").baseTexture;
         var explosionTextures: PIXI.Texture[] = [];
         for (var i = 0; i < 10; i++) {
             for (var g = 0; g < 10; g++) {

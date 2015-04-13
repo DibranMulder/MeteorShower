@@ -2,7 +2,7 @@
     private spearSprite: PIXI.Sprite;
 
     constructor(stage: PIXI.Stage, private x: number, private y: number) {
-        var spearTexture = PIXI.Texture.fromImage("../../images/spear_small.png");
+        var spearTexture = PIXI.Texture.fromImage("images/spear_small.png");
         this.spearSprite = new PIXI.Sprite(spearTexture);
         this.spearSprite.position.x = x;
         this.spearSprite.position.y = y;
