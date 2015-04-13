@@ -13,8 +13,13 @@ createMeteor();
 var spear = new Spear(stage, -100, 200);
 drawables.push(spear);
 
+var fpsmeter = new (<any>window).FPSMeter();
+
 requestAnimFrame(animate);
 function animate() {
+    // render the stage   
+    renderer.render(stage);
+
     var animationAgeInMs = new Date().getTime();
     for (var i = 0; i < drawables.length; i++) {
         if (!drawables[i].paint(animationAgeInMs)) {
@@ -22,7 +27,7 @@ function animate() {
             createMeteor();
         }
     }
-    // render the stage   
-    renderer.render(stage);
+    fpsmeter.tick();
+    
     requestAnimFrame(animate);
 }
