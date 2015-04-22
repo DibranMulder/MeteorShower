@@ -1,0 +1,9 @@
+D:\Development\Solutions\MeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.dll
+D:\Development\Solutions\MeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.pdb
+D:\Development\Solutions\MeteorShower\MeteorShower\MeteorShower\obj\Debug\MeteorShower.dll
+D:\Development\Solutions\MeteorShower\MeteorShower\MeteorShower\obj\Debug\MeteorShower.pdb
+D:\Development\Solutions\MeteorShower\MeteorShower\MeteorShower\obj\Debug\MeteorShower.csprojResolveAssemblyReference.cache
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.pdb
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\obj\Debug\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\obj\Debug\MeteorShower.pdb

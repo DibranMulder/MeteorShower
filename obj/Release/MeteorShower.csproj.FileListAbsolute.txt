@@ -1,0 +1,4 @@
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\bin\MeteorShower.pdb
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\obj\Release\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\MeteorShower\MeteorShower\obj\Release\MeteorShower.pdb
