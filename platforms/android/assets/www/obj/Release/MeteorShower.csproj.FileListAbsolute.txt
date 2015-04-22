@@ -1,0 +1,5 @@
+D:\Development\Solutions\GitMeteorShower\com.dibranmulder.meteorshower\www\bin\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\com.dibranmulder.meteorshower\www\bin\MeteorShower.pdb
+D:\Development\Solutions\GitMeteorShower\com.dibranmulder.meteorshower\www\obj\Release\MeteorShower.csprojResolveAssemblyReference.cache
+D:\Development\Solutions\GitMeteorShower\com.dibranmulder.meteorshower\www\obj\Release\MeteorShower.dll
+D:\Development\Solutions\GitMeteorShower\com.dibranmulder.meteorshower\www\obj\Release\MeteorShower.pdb
