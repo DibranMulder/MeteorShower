@@ -9,7 +9,7 @@
     public health: number = 100;
 
     constructor(stage: PIXI.Stage, x: number, y: number) {
-        var texture = PIXI.Texture.fromImage("images/zelda_basic_small.png").baseTexture;
+        var texture = PIXI.Texture.fromImage("../images/zelda_basic_small.png").baseTexture;
         // 2 rows
         for (var i = 0; i < 2; i++) {
             var animationTextures = [];
