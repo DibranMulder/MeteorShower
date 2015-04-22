@@ -13,7 +13,7 @@ renderer.resize(width, height);
 // add the renderer view element to the DOM
 document.body.appendChild(renderer.view);
 
-var midTexture = PIXI.Texture.fromImage("../images/level1.png");
+var midTexture = PIXI.Texture.fromImage("images/level1.png");
 var mid = new PIXI.Sprite(midTexture);
 mid.position.x = 0;
 mid.position.y = 0;

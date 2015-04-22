@@ -3,7 +3,7 @@
     public disappearing: boolean = false;
 
     constructor(stage: PIXI.Stage, private x: number, private y: number) {
-        var spearTexture = PIXI.Texture.fromImage("../images/spear_small.png");
+        var spearTexture = PIXI.Texture.fromImage("images/spear_small.png");
         this.displayObject = new PIXI.Sprite(spearTexture);
         this.displayObject.position.x = x;
         this.displayObject.position.y = y;
