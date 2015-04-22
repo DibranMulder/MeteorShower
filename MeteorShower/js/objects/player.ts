@@ -1,4 +1,4 @@
-﻿class Player implements IDrawable {
+﻿class Player {
     public amountOfFrames: number = 8;
     // 12 is the fps
     public msPerFrame: number = 1000 / 12;
@@ -6,7 +6,9 @@
     public playerAnimation: PIXI.MovieClip;
     public allDirectionsAnimations: PIXI.MovieClip[] = [];
 
-    constructor(stage: PIXI.Stage, private x: number, private y: number) {
+    public health: number = 100;
+
+    constructor(stage: PIXI.Stage, x: number, y: number) {
         var texture = PIXI.Texture.fromImage("images/zelda_basic_small.png").baseTexture;
         // 2 rows
         for (var i = 0; i < 2; i++) {
@@ -53,5 +55,22 @@
             }
         }
         return true;
+    }
+
+    public colidesWith(object: IDrawable): boolean {
+        if (!object.disappearing) {
+            if (this.playerAnimation.x < object.displayObject.x + object.displayObject.width &&
+                this.playerAnimation.x + this.playerAnimation.width > object.displayObject.x &&
+                this.playerAnimation.y < object.displayObject.y + object.displayObject.height &&
+                this.playerAnimation.height + this.playerAnimation.y > object.displayObject.y) {
+
+                object.collisionOccured();
+
+                this.health -= 10;
+                healthBar.width -= 10;
+                return true;
+            }
+        }
+        return false;
     }
 }

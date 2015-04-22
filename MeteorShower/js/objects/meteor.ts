@@ -1,4 +1,6 @@
 ﻿class Meteor implements IDrawable {
+    public disappearing: boolean = false;
+
     private static _meteorTextures: PIXI.Texture[];
     public static get meteorTextures(): PIXI.Texture[] {
         if (!Meteor._meteorTextures) {
@@ -13,22 +15,23 @@
         return Meteor._meteorTextures;
     }
 
-    public currentAnimation: PIXI.MovieClip;
+    public displayObject: PIXI.MovieClip;
 
     constructor(stage: PIXI.Stage, private x: number, private y: number) {
-        this.currentAnimation = new PIXI.MovieClip(Meteor.meteorTextures);
-        this.currentAnimation.position.x = x;
-        this.currentAnimation.position.y = -100;
-        this.currentAnimation.visible = true;
-        this.currentAnimation.animationSpeed = 0.25;
+        this.displayObject = new PIXI.MovieClip(Meteor.meteorTextures);
+        this.displayObject.position.x = x;
+        this.displayObject.position.y = -100;
+        this.displayObject.visible = true;
+        this.displayObject.animationSpeed = 0.25;
               
-        applyRatio(this.currentAnimation, ratio);
-        stage.addChild(this.currentAnimation);
-        this.currentAnimation.play();
+        applyRatio(this.displayObject, ratio);
+        stage.addChild(this.displayObject);
+        this.displayObject.play();
     }
 
-    private exploding: boolean = false;
     public explode(stage): PIXI.MovieClip {
+        this.disappearing = true;
+
         var explosion = PIXI.Texture.fromImage("images/explosion.png").baseTexture;
         var explosionTextures: PIXI.Texture[] = [];
         for (var i = 0; i < 10; i++) {
@@ -42,38 +45,41 @@
         applyRatio(explosionAnimation, ratio);
         explosionAnimation.loop = false;
         explosionAnimation.animationSpeed = 2;
-        explosionAnimation.position.x = this.currentAnimation.position.x - ((explosionAnimation.width - this.currentAnimation.width) / 2);
-        explosionAnimation.position.y = this.currentAnimation.position.y + (this.currentAnimation.height - explosionAnimation.height);
+        explosionAnimation.position.x = this.displayObject.position.x - ((explosionAnimation.width - this.displayObject.width) / 2);
+        explosionAnimation.position.y = this.displayObject.position.y + (this.displayObject.height - explosionAnimation.height);
         explosionAnimation.play();
         explosionAnimation.onComplete = () => {
             // After the stack is completed
             setTimeout(() => {
-                stage.removeChild(this.currentAnimation);
-                this.currentAnimation = null;
+                stage.removeChild(this.displayObject);
+                this.displayObject = null;
             }, 0);
         };
         
-        stage.removeChild(this.currentAnimation);
+        stage.removeChild(this.displayObject);
 
-        this.currentAnimation = explosionAnimation;
-        stage.addChild(this.currentAnimation);
+        this.displayObject = explosionAnimation;
+        stage.addChild(this.displayObject);
                
         return explosionAnimation;
     }
 
     public paint(animationAgeInMs: number): boolean {
-        if (!this.exploding) {
-            if (this.currentAnimation.position.y <= (225 * ratio)) {
-                this.currentAnimation.position.y += (2 * ratio);
+        if (!this.disappearing) {
+            if (this.displayObject.position.y <= (225 * ratio)) {
+                this.displayObject.position.y += (2 * ratio);
             } else {
-                this.exploding = true;
                 this.explode(stage);
             }
         } 
-        if (this.currentAnimation == null) {
+        if (this.displayObject == null) {
             return false;
         }
 
         return true;
+    }
+
+    public collisionOccured() {
+        this.explode(stage);
     }
 }

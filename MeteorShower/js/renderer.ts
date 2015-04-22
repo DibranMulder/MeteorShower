@@ -1,17 +1,16 @@
 ﻿function createMeteor() {
     var randomX = Math.floor(Math.random() * 500) + 1;
     var meteor = new Meteor(stage, randomX, -100);
-    drawables.push(meteor);
+    objects.push(meteor);
 };
 
 var player = new Player(stage, 400, 265);
-var drawables: IDrawable[] = [];
-drawables.push(player);
+var objects: IDrawable[] = [];
 
 createMeteor();
 
 var spear = new Spear(stage, -100, 200);
-drawables.push(spear);
+objects.push(spear);
 
 var fpsmeter = new (<any>window).FPSMeter();
 
@@ -21,12 +20,16 @@ function animate() {
     renderer.render(stage);
 
     var animationAgeInMs = new Date().getTime();
-    for (var i = 0; i < drawables.length; i++) {
-        if (!drawables[i].paint(animationAgeInMs)) {
-            drawables.splice(i, 1);
+    for (var i = 0; i < objects.length; i++) {
+        var object = objects[i];
+        if (!object.paint(animationAgeInMs) || player.colidesWith(object)) {
+            objects.splice(i, 1);
             createMeteor();
         }
     }
+
+    player.paint(animationAgeInMs);
+
     fpsmeter.tick();
     
     requestAnimFrame(animate);
