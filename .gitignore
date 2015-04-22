@@ -1,9 +1,9 @@
 *.dll
 *.suo
-MeteorShower/bin/
-MeteorShower/obj/
-MeteorShower/js/*.js
-MeteorShower/js/objects/*.js
+www/bin/
+www/obj/
+www/js/*.js
+www/js/objects/*.js
 *.map
 *.user
 *.pdb
