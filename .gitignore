@@ -4,6 +4,9 @@ www/bin/
 www/obj/
 www/js/*.js
 www/js/objects/*.js
+platforms/android/build/
+platforms/android/CordovaLib/build/
+platforms/android/.gradle/
 *.map
 *.user
 *.pdb
