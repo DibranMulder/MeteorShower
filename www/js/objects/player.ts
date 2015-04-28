@@ -33,12 +33,19 @@
     public updateDirection(direction: number) {
         this.currentDirection = direction;
         if (this.currentDirection !== -1) {
+            var tmpX, tmpY;
             if (this.playerAnimation) {
                 this.playerAnimation.stop();
                 this.playerAnimation.visible = false;
+                tmpX = this.playerAnimation.position.x;
+                tmpY = this.playerAnimation.position.y;
             }
             this.playerAnimation = this.allDirectionsAnimations[this.currentDirection];
             this.playerAnimation.visible = true;
+            if (tmpX != undefined && tmpY != undefined) {
+                this.playerAnimation.position.x = tmpX;
+                this.playerAnimation.position.y = tmpY;
+            }
         }
     }
 
@@ -54,13 +61,10 @@
     public paint(animationAgeInMs: number) {
         if (moveMouseDown) {
             this.playerAnimation.gotoAndStop((Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames));
-            for (var i = 0; i < this.allDirectionsAnimations.length; i++) {
-                var annimation = this.allDirectionsAnimations[i];
-                if (this.currentDirection === 0) {
-                    annimation.position.x -= 3;
-                } else if (this.currentDirection === 1) {
-                    annimation.position.x += 3;
-                }
+            if (this.currentDirection === 0) {
+                this.playerAnimation.position.x -= 3;
+            } else if (this.currentDirection === 1) {
+                this.playerAnimation.position.x += 3;
             }
         }
         if (this.jumping) {
