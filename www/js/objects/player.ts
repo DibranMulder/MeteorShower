@@ -42,8 +42,17 @@
         }
     }
 
+    private jumping: boolean;
+    private jumpingIteration: number;
+    public jump() {
+        if (!this.jumping) {
+            this.jumping = true;
+            this.jumpingIteration = 0;
+        }
+    }
+
     public paint(animationAgeInMs: number) {
-        if (isMouseDown) {
+        if (moveMouseDown) {
             this.playerAnimation.gotoAndStop((Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames));
             for (var i = 0; i < this.allDirectionsAnimations.length; i++) {
                 var annimation = this.allDirectionsAnimations[i];
@@ -52,6 +61,15 @@
                 } else if (this.currentDirection === 1) {
                     annimation.position.x += 3;
                 }
+            }
+        }
+        if (this.jumping) {
+            if (this.jumpingIteration == 31) {
+                this.jumping = false;
+            } else {
+                var yDelta = 15 - this.jumpingIteration;
+                this.playerAnimation.position.y -= yDelta;
+                this.jumpingIteration++;
             }
         }
         return true;

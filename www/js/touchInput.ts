@@ -11,23 +11,28 @@ mouseGraphics.drawCircle(0, 0, 30);
 mouseGraphics.visible = false;
 stage.addChild(mouseGraphics);
 
-var isMouseDown = false;
+var moveMouseDown = false;
 
 document.addEventListener('pointerdown', function (e) {
-    mouseStartGraphics.x = e.x;
-    mouseStartGraphics.y = e.y;
-    mouseStartGraphics.visible = true;
+    if (e.x < (width / 2)) {
+        mouseStartGraphics.x = e.x;
+        mouseStartGraphics.y = e.y;
+        mouseStartGraphics.visible = true;
 
-    player.updateDirection(-1);
+        player.updateDirection(-1);
 
-    mouseGraphics.x = e.x;
-    mouseGraphics.y = e.y;
-    mouseGraphics.visible = true;
-    isMouseDown = true;
+        mouseGraphics.x = e.x;
+        mouseGraphics.y = e.y;
+        mouseGraphics.visible = true;
+        moveMouseDown = true;
+    }
+    if (e.x > (width / 2)) {
+        player.jump();
+    }
 }, false);
 
 document.addEventListener('pointermove', function (e) {
-    if (isMouseDown) {
+    if (moveMouseDown) {
         if (e.x < mouseStartGraphics.x) {
             // left
             player.updateDirection(0);
@@ -42,7 +47,7 @@ document.addEventListener('pointermove', function (e) {
 }, false);
 
 document.addEventListener('pointerup', function (e) {
-    isMouseDown = false;
+    moveMouseDown = false;
     mouseStartGraphics.visible = false;
     mouseGraphics.visible = false;
 }, false);
