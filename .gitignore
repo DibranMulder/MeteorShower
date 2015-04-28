@@ -7,6 +7,9 @@ www/js/objects/*.js
 platforms/android/build/
 platforms/android/CordovaLib/build/
 platforms/android/.gradle/
+platforms/android/.idea/
 *.map
 *.user
 *.pdb
+platforms/android/android.iml
+platforms/android/CordovaLib/CordovaLib.iml
