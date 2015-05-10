@@ -24,6 +24,7 @@
     <Content Include="images\zelda_basic_small.png" />
     <Content Include="index.html" />
     <TypeScriptCompile Include="js\IDrawable.ts" />
+    <TypeScriptCompile Include="js\healthBar.ts" />
     <Content Include="js\libs\fpsmeter.min.js" />
     <Content Include="js\libs\hand-1.3.8.js" />
     <TypeScriptCompile Include="js\libs\pixi.d.ts" />

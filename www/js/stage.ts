@@ -21,17 +21,7 @@ mid.interactive = true;
 applyRatio(mid, ratio);
 stage.addChild(mid);
 
-var healthBar = new PIXI.Graphics();
-healthBar.beginFill(0xFF0000);
-healthBar.drawRect(580, 20, 120, 20);
-applyRatio(healthBar, ratio);
-stage.addChild(healthBar);
-
-var healthBarBounds = new PIXI.Graphics();
-healthBarBounds.lineStyle(2, 0x9C9C9C);
-healthBarBounds.drawRect(580, 20, 120, 20);
-applyRatio(healthBarBounds, ratio);
-stage.addChild(healthBarBounds);
+var healthBar = new HealthBar();
 
 function applyRatio(displayObj: PIXI.DisplayObject, ratio: number) {
     if (ratio == 1) return;

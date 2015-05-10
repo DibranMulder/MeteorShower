@@ -88,8 +88,13 @@
 
                 object.collisionOccured();
 
-                this.health -= 10;
-                healthBar.width -= 10;
+                this.health -= 50;
+                healthBar.update(this.health);
+
+                if (this.health <= 0) {
+                    setGameOver();
+                }
+
                 return true;
             }
         }
