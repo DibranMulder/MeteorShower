@@ -11,16 +11,10 @@ function setGameOver() {
     anchor.href = "index.html";
     anchor.style.textDecoration = "none";
     var div = document.createElement("div");
-    div.style.margin = "auto";
-    div.style.height = "50px";
-    div.style.position = "absolute";
-    div.style.top = "0px";
-    div.style.textAlign = "center";
     div.style.height = renderer.height + "px";
     div.style.width = renderer.width + "px";
     div.style.lineHeight = renderer.height + "px";
     div.style.fontSize = (renderer.height / 7) + "px";
-    div.style.backgroundColor = "black";
     var p = document.createElement("span");
     p.textContent = "GAME OVER";
     p.style.color = "red";
