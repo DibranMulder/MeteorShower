@@ -7,6 +7,9 @@
 var gameOver: boolean = false;
 function setGameOver() {
     gameOver = true;
+    var anchor = document.createElement("a");
+    anchor.href = "index.html";
+    anchor.style.textDecoration = "none";
     var div = document.createElement("div");
     div.style.margin = "auto";
     div.style.height = "50px";
@@ -22,7 +25,8 @@ function setGameOver() {
     p.textContent = "GAME OVER";
     p.style.color = "red";
     div.appendChild(p);
-    document.body.appendChild(div);
+    anchor.appendChild(div);
+    document.body.appendChild(anchor);
 };
 
 var player = new Player(stage, 400, 265);
@@ -37,20 +41,22 @@ var fpsmeter = new (<any>window).FPSMeter();
 
 requestAnimFrame(animate);
 function animate() {
+    if (gameOver) return;
+
     // render the stage   
     renderer.render(stage);
-    if (!gameOver) {
-        var animationAgeInMs = new Date().getTime();
-        for (var i = 0; i < objects.length; i++) {
-            var object = objects[i];
-            if (!object.paint(animationAgeInMs) || player.colidesWith(object)) {
-                objects.splice(i, 1);
-                createMeteor();
-            }
+    
+    var animationAgeInMs = new Date().getTime();
+    for (var i = 0; i < objects.length; i++) {
+        var object = objects[i];
+        if (!object.paint(animationAgeInMs) || player.colidesWith(object)) {
+            objects.splice(i, 1);
+            createMeteor();
         }
-
-        player.paint(animationAgeInMs);
     }
+
+    player.paint(animationAgeInMs);
+
     fpsmeter.tick();
     
     requestAnimFrame(animate);
