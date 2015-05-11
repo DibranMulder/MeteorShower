@@ -60,7 +60,7 @@ document.addEventListener('pointerdown', function (e) {
 }, false);
 
 document.addEventListener('pointermove', function (e) {
-    if (moveMouseDown) {
+    if (moveMouseDown && pointerManager.x != null && pointerManager.x != e.x) {
         if (e.x < pointerManager.x) {
             // left
             player.updateDirection(0);
