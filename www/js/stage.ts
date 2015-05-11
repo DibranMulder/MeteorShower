@@ -21,7 +21,24 @@ mid.interactive = true;
 applyRatio(mid, ratio);
 stage.addChild(mid);
 
+createWood(0, 205);
+createWood(30, 205);
+createWood(60, 205);
+createWood(90, 235);
+createWood(120, 235);
+createWood(150, 265);
+createWood(180, 265);
+
 var healthBar = new HealthBar();
+
+function createWood(x: number, y: number) {
+    var woodTexture = PIXI.Texture.fromImage("images/wood.png");
+    var wood = new PIXI.Sprite(woodTexture);
+    wood.position.x = x;
+    wood.position.y = y;
+    applyRatio(wood, ratio);
+    stage.addChild(wood);
+}
 
 function applyRatio(displayObj: PIXI.DisplayObject, ratio: number) {
     if (ratio == 1) return;
