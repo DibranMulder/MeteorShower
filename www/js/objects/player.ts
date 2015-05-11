@@ -1,5 +1,5 @@
 ﻿class Player {
-    public amountOfFrames: number = 8;
+    public amountOfFrames: number = 2;
     // 12 is the fps
     public msPerFrame: number = 1000 / 12;
 
@@ -9,12 +9,12 @@
     public health: number = 100;
 
     constructor(stage: PIXI.Stage, x: number, y: number) {
-        var texture = PIXI.Texture.fromImage("images/zelda_basic_small.png").baseTexture;
+        var texture = PIXI.Texture.fromImage("images/soldier_atease.png").baseTexture;
         // 2 rows
         for (var i = 0; i < 2; i++) {
             var animationTextures = [];
-            for (var j = 0; j < 8; j++) {
-                var tempTexture = new PIXI.Texture(texture, new PIXI.Rectangle(j * 60, i * 60, 60, 60));
+            for (var j = 0; j < 2; j++) {
+                var tempTexture = new PIXI.Texture(texture, new PIXI.Rectangle(j * 30, i * 30, 30, 30));
                 animationTextures.push(tempTexture);
             };
             var oneWayAnimation = new PIXI.MovieClip(animationTextures);
@@ -22,6 +22,8 @@
             oneWayAnimation.position.x = x;
             oneWayAnimation.position.y = y;
             applyRatio(oneWayAnimation, ratio);
+            oneWayAnimation.scale.x = oneWayAnimation.scale.x * 2;
+            oneWayAnimation.scale.y = oneWayAnimation.scale.y * 2;
             oneWayAnimation.stop();
             stage.addChild(oneWayAnimation);
             this.allDirectionsAnimations.push(oneWayAnimation)
