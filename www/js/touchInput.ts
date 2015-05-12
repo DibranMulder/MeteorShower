@@ -1,9 +1,7 @@
 ﻿class PointerManager {
-    public x: number;
-    public y: number;
     private pointerId: number;
 
-    private pointerStartGraphics: PIXI.Graphics;
+    public pointerStartGraphics: PIXI.Graphics;
     private pointerMoveGraphics: PIXI.Graphics;
 
     constructor() {
@@ -31,8 +29,6 @@
     }
 
     public pointerMove(x: number, y: number) {
-        this.x = x;
-        this.y = y;
         this.pointerMoveGraphics.x = x;
         this.pointerMoveGraphics.y = y;
     }
@@ -60,8 +56,8 @@ document.addEventListener('pointerdown', function (e) {
 }, false);
 
 document.addEventListener('pointermove', function (e) {
-    if (moveMouseDown && pointerManager.x != null && pointerManager.x != e.x) {
-        if (e.x < pointerManager.x) {
+    if (moveMouseDown && pointerManager.pointerStartGraphics.x != null && pointerManager.pointerStartGraphics.x != e.x) {
+        if (e.x < pointerManager.pointerStartGraphics.x) {
             // left
             player.updateDirection(0);
         } else {
