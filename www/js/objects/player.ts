@@ -6,6 +6,9 @@
     public playerAnimation: PIXI.MovieClip;
     public allDirectionsAnimations: PIXI.MovieClip[] = [];
 
+    private speed: number = 3 * ratio;
+    private jumpDistance: number = 15 * ratio;
+
     public health: number = 100;
 
     constructor(stage: PIXI.Stage, x: number, y: number) {
@@ -64,16 +67,15 @@
         if (moveMouseDown) {
             this.playerAnimation.gotoAndStop((Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames));
             if (this.currentDirection === 0) {
-                this.playerAnimation.position.x -= 3;
+                this.playerAnimation.position.x -= this.speed;
             } else if (this.currentDirection === 1) {
-                this.playerAnimation.position.x += 3;
+                this.playerAnimation.position.x += this.speed;
             }
         }
         if (this.jumping) {
             if (this.jumpingIteration == 31) {
                 this.jumping = false;
             } else {
-                var yDelta = 15 - this.jumpingIteration;
                 this.playerAnimation.position.y -= yDelta;
                 this.jumpingIteration++;
             }
