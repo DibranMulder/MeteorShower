@@ -76,6 +76,7 @@
             if (this.jumpingIteration == 31) {
                 this.jumping = false;
             } else {
+                var yDelta = this.jumpDistance - (ratio * this.jumpingIteration);
                 this.playerAnimation.position.y -= yDelta;
                 this.jumpingIteration++;
             }
