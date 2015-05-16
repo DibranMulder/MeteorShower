@@ -7,14 +7,14 @@
     constructor() {
         this.pointerStartGraphics = new PIXI.Graphics();
         this.pointerStartGraphics.lineStyle(5, 0xFF0000);
-        this.pointerStartGraphics.drawCircle(0, 0, 30);
+        this.pointerStartGraphics.drawCircle(0, 0, 30 * ratio);
         this.pointerStartGraphics.visible = false;
         stage.addChild(this.pointerStartGraphics);
 
         this.pointerMoveGraphics = new PIXI.Graphics();
         // set the line style to have a width of 5 and set the color to red
         this.pointerMoveGraphics.lineStyle(2, 0xFF0000);
-        this.pointerMoveGraphics.drawCircle(0, 0, 30);
+        this.pointerMoveGraphics.drawCircle(0, 0, 30 * ratio);
         this.pointerMoveGraphics.visible = false;
         stage.addChild(this.pointerMoveGraphics);
     }
