@@ -32,10 +32,9 @@ createWood(180, 265);
 var healthBar = new HealthBar();
 
 function createWood(x: number, y: number) {
-    var woodTexture = PIXI.Texture.fromImage("images/wood.png");
-    var wood = new PIXI.Sprite(woodTexture);
-    wood.position.x = x;
-    wood.position.y = y;
+    var wood = new PIXI.Graphics();
+    wood.beginFill(0x734A02);
+    wood.drawRect(x, y, 30, 30);
     applyRatio(wood, ratio);
     stage.addChild(wood);
 }

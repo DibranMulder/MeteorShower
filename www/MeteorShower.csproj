@@ -22,7 +22,6 @@
     <Content Include="images\meteor_small.png" />
     <Content Include="images\soldier_atease.png" />
     <Content Include="images\spear_small.png" />
-    <Content Include="images\wood.png" />
     <Content Include="images\zelda_basic_small.png" />
     <Content Include="game.html" />
     <TypeScriptCompile Include="js\IDrawable.ts" />
