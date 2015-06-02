@@ -18,17 +18,23 @@ mid.interactive = true;
 applyRatio(mid, ratio);
 stage.addChild(mid);
 
-var healthBar = new PIXI.Graphics();
-healthBar.beginFill(0xFF0000);
-healthBar.drawRect(580, 20, 120, 20);
-applyRatio(healthBar, ratio);
-stage.addChild(healthBar);
+createWood(0, 205);
+createWood(30, 205);
+createWood(60, 205);
+createWood(90, 235);
+createWood(120, 235);
+createWood(150, 265);
+createWood(180, 265);
 
-var healthBarBounds = new PIXI.Graphics();
-healthBarBounds.lineStyle(2, 0x9C9C9C);
-healthBarBounds.drawRect(580, 20, 120, 20);
-applyRatio(healthBarBounds, ratio);
-stage.addChild(healthBarBounds);
+var healthBar = new HealthBar();
+
+function createWood(x, y) {
+    var wood = new PIXI.Graphics();
+    wood.beginFill(0x734A02);
+    wood.drawRect(x, y, 30, 30);
+    applyRatio(wood, ratio);
+    stage.addChild(wood);
+}
 
 function applyRatio(displayObj, ratio) {
     if (ratio == 1)

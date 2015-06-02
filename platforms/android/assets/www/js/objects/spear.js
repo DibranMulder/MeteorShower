@@ -11,11 +11,11 @@
         stage.addChild(this.displayObject);
     }
     Spear.prototype.paint = function (animationAgeInMs) {
-        if (this.displayObject.position.x > 820) {
+        if (this.displayObject.position.x > (820 * ratio)) {
             stage.removeChild(this.displayObject);
             return false;
         } else {
-            this.displayObject.position.x += 4;
+            this.displayObject.position.x += (4 * ratio);
         }
 
         return true;
