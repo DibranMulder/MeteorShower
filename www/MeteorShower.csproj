@@ -15,6 +15,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ItemGroup>
     <Content Include="images\explosion.png" />
@@ -29,15 +30,15 @@
     <Content Include="index.html" />
     <Content Include="js\libs\fpsmeter.min.js" />
     <Content Include="js\libs\hand-1.3.8.js" />
-    <TypeScriptCompile Include="js\libs\pixi.d.ts" />
-    <Content Include="js\libs\pixi.dev.js" />
     <Content Include="js\libs\pixi.js" />
+    <TypeScriptCompile Include="js\libs\pixi.js.d.ts" />
     <TypeScriptCompile Include="js\menu.ts" />
     <TypeScriptCompile Include="js\objects\meteor.ts" />
     <TypeScriptCompile Include="js\objects\player.ts" />
     <TypeScriptCompile Include="js\objects\spear.ts" />
     <TypeScriptCompile Include="js\touchInput.ts" />
     <TypeScriptCompile Include="js\stage.ts" />
+    <Content Include="js\libs\pixi.min.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,8 @@
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:49326/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:49326/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

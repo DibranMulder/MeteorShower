@@ -33,7 +33,7 @@ objects.push(spear);
 
 var fpsmeter = new (<any>window).FPSMeter();
 
-requestAnimFrame(animate);
+animate();
 function animate() {
     if (gameOver) return;
 
@@ -52,6 +52,6 @@ function animate() {
     player.paint(animationAgeInMs);
 
     fpsmeter.tick();
-    
-    requestAnimFrame(animate);
+
+    requestAnimationFrame(animate);
 }

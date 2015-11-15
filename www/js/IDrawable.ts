@@ -1,5 +1,5 @@
 ﻿interface IDrawable {
-    displayObject: PIXI.DisplayObjectContainer;
+    displayObject: PIXI.Container;
     disappearing: boolean;
     paint(animationAgeInMs: number): void;
     collisionOccured(): void;

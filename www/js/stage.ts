@@ -1,9 +1,11 @@
 ﻿// create an new instance of a pixi stage
-var stage = new PIXI.Stage(0x66FF99);
-stage.interactive = true;
+var renderer = PIXI.autoDetectRenderer(720, 540, { backgroundColor: 0x66FF99 });
+document.body.appendChild(renderer.view);
 
-// create a renderer instance
-var renderer = PIXI.autoDetectRenderer(720, 540);
+// create the root of the scene graph
+var stage = new PIXI.Container();
+
+stage.interactive = true;
 
 var ratio = Math.min(window.innerWidth / 720, window.innerHeight / 540);
 var width = 720 * ratio;

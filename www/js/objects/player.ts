@@ -3,15 +3,15 @@
     // 12 is the fps
     public msPerFrame: number = 1000 / 12;
 
-    public playerAnimation: PIXI.MovieClip;
-    public allDirectionsAnimations: PIXI.MovieClip[] = [];
+    public playerAnimation: PIXI.extras.MovieClip;
+    public allDirectionsAnimations: PIXI.extras.MovieClip[] = [];
 
     private speed: number = 3 * ratio;
     private jumpDistance: number = 15 * ratio;
 
     public health: number = 100;
 
-    constructor(stage: PIXI.Stage, x: number, y: number) {
+    constructor(stage: PIXI.Container, x: number, y: number) {
         var texture = PIXI.Texture.fromImage("images/soldier_atease.png").baseTexture;
         // 2 rows
         for (var i = 0; i < 2; i++) {
@@ -20,7 +20,7 @@
                 var tempTexture = new PIXI.Texture(texture, new PIXI.Rectangle(j * 30, i * 30, 30, 30));
                 animationTextures.push(tempTexture);
             };
-            var oneWayAnimation = new PIXI.MovieClip(animationTextures);
+            var oneWayAnimation = new PIXI.extras.MovieClip(animationTextures);
             oneWayAnimation.visible = false;
             oneWayAnimation.position.x = x;
             oneWayAnimation.position.y = y;
@@ -64,7 +64,7 @@
     }
 
     public paint(animationAgeInMs: number) {
-        if (moveMouseDown) {
+        if (pointerManager.isMoving) {
             this.playerAnimation.gotoAndStop((Math.floor(animationAgeInMs / this.msPerFrame) % this.amountOfFrames));
             if (this.currentDirection === 0) {
                 this.playerAnimation.position.x -= this.speed;

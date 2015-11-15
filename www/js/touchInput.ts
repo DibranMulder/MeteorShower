@@ -1,6 +1,5 @@
 ﻿class PointerManager {
-    private pointerId: number;
-
+    public pointerId: number;
     public pointerStartGraphics: PIXI.Graphics;
     private pointerMoveGraphics: PIXI.Graphics;
 
@@ -34,21 +33,21 @@
     }
 
     public pointerUp(pointerId: number) {
-        if (this.pointerId == pointerId) {
-            this.pointerStartGraphics.visible = false;
-            this.pointerMoveGraphics.visible = false;
-        }
+        this.pointerStartGraphics.visible = false;
+        this.pointerMoveGraphics.visible = false;
+        this.pointerId = null;
+    }
+
+    public get isMoving(): boolean {
+        return this.pointerId != null;
     }
 }
 
-
 var pointerManager = new PointerManager();
-var moveMouseDown = false;
 
 document.addEventListener('pointerdown', function (e) {
     if (e.x < (width / 2)) {
         pointerManager.pointerDown(e.pointerId, e.x, e.y);
-        moveMouseDown = true;
     }
     if (e.x > (width / 2)) {
         player.jump();
@@ -56,7 +55,9 @@ document.addEventListener('pointerdown', function (e) {
 }, false);
 
 document.addEventListener('pointermove', function (e) {
-    if (moveMouseDown && pointerManager.pointerStartGraphics.x != null && pointerManager.pointerStartGraphics.x != e.x) {
+    if (pointerManager.pointerId == e.pointerId &&
+        pointerManager.pointerStartGraphics.x != null &&
+        pointerManager.pointerStartGraphics.x != e.x) {
         if (e.x < pointerManager.pointerStartGraphics.x) {
             // left
             player.updateDirection(0);
@@ -66,10 +67,10 @@ document.addEventListener('pointermove', function (e) {
         }
         pointerManager.pointerMove(e.x, e.y);
     }
-
 }, false);
 
 document.addEventListener('pointerup', function (e) {
-    moveMouseDown = false;
-    pointerManager.pointerUp(e.pointerId);
+    if (pointerManager.pointerId == e.pointerId) {
+        pointerManager.pointerUp(e.pointerId);
+    }
 }, false);

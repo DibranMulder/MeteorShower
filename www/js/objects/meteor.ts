@@ -15,21 +15,21 @@
         return Meteor._meteorTextures;
     }
 
-    public displayObject: PIXI.MovieClip;
+    public displayObject: PIXI.extras.MovieClip;
 
-    constructor(stage: PIXI.Stage, private x: number, private y: number) {
-        this.displayObject = new PIXI.MovieClip(Meteor.meteorTextures);
+    constructor(stage: PIXI.Container, private x: number, private y: number) {
+        this.displayObject = new PIXI.extras.MovieClip(Meteor.meteorTextures);
         this.displayObject.position.x = x;
         this.displayObject.position.y = -100;
         this.displayObject.visible = true;
         this.displayObject.animationSpeed = 0.25;
-              
+
         applyRatio(this.displayObject, ratio);
         stage.addChild(this.displayObject);
         this.displayObject.play();
     }
 
-    public explode(stage): PIXI.MovieClip {
+    public explode(stage): PIXI.extras.MovieClip {
         this.disappearing = true;
 
         var explosion = PIXI.Texture.fromImage("images/explosion.png").baseTexture;
@@ -41,7 +41,7 @@
                 explosionTextures.push(explosionTexture);
             }
         }
-        var explosionAnimation = new PIXI.MovieClip(explosionTextures);
+        var explosionAnimation = new PIXI.extras.MovieClip(explosionTextures);
         applyRatio(explosionAnimation, ratio);
         explosionAnimation.loop = false;
         explosionAnimation.animationSpeed = 2;
