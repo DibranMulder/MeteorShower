@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteorShower", "www/MeteorShower.csproj", "{C3445165-6711-4C0D-8B86-63A20FD86275}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeteorShower", "www\MeteorShower.csproj", "{C3445165-6711-4C0D-8B86-63A20FD86275}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "GameServer", "GameServer\GameServer.njsproj", "{31A5B79E-8A7C-4D93-BCBF-090D0A3065B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{C3445165-6711-4C0D-8B86-63A20FD86275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3445165-6711-4C0D-8B86-63A20FD86275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3445165-6711-4C0D-8B86-63A20FD86275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A5B79E-8A7C-4D93-BCBF-090D0A3065B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A5B79E-8A7C-4D93-BCBF-090D0A3065B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A5B79E-8A7C-4D93-BCBF-090D0A3065B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A5B79E-8A7C-4D93-BCBF-090D0A3065B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

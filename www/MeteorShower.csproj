@@ -9,7 +9,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -21,28 +21,31 @@
     <Content Include="images\explosion.png" />
     <Content Include="images\level1.png" />
     <Content Include="images\meteor_small.png" />
+    <Content Include="images\opposite_player.png" />
     <Content Include="images\soldier_atease.png" />
     <Content Include="images\spear_small.png" />
     <Content Include="images\zelda_basic_small.png" />
     <Content Include="game.html" />
-    <TypeScriptCompile Include="js\IDrawable.ts" />
-    <TypeScriptCompile Include="js\healthBar.ts" />
+    <TypeScriptCompile Include="scripts\IDrawable.ts" />
+    <TypeScriptCompile Include="scripts\healthBar.ts" />
     <Content Include="index.html" />
-    <Content Include="js\libs\fpsmeter.min.js" />
-    <Content Include="js\libs\hand-1.3.8.js" />
-    <Content Include="js\libs\pixi.js" />
-    <TypeScriptCompile Include="js\libs\pixi.js.d.ts" />
-    <TypeScriptCompile Include="js\menu.ts" />
-    <TypeScriptCompile Include="js\objects\meteor.ts" />
-    <TypeScriptCompile Include="js\objects\player.ts" />
-    <TypeScriptCompile Include="js\objects\spear.ts" />
-    <TypeScriptCompile Include="js\touchInput.ts" />
-    <TypeScriptCompile Include="js\stage.ts" />
-    <Content Include="js\libs\pixi.min.js" />
+    <Content Include="scripts\libs\fpsmeter.min.js" />
+    <Content Include="scripts\libs\hand-1.3.8.js" />
+    <Content Include="scripts\libs\pixi.js" />
+    <TypeScriptCompile Include="scripts\objects\oppositePlayer.ts" />
+    <TypeScriptCompile Include="scripts\typings\pixi.js.d.ts" />
+    <TypeScriptCompile Include="scripts\objects\meteor.ts" />
+    <TypeScriptCompile Include="scripts\objects\player.ts" />
+    <TypeScriptCompile Include="scripts\objects\spear.ts" />
+    <TypeScriptCompile Include="scripts\touchInput.ts" />
+    <TypeScriptCompile Include="scripts\stage.ts" />
+    <Content Include="scripts\libs\pixi.min.js" />
+    <Content Include="scripts\libs\socket.io-1.4.5.js" />
     <Content Include="web.config" />
+    <TypeScriptCompile Include="scripts\typings\socket.io-client.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="js\renderer.ts" />
+    <TypeScriptCompile Include="scripts\renderer.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
