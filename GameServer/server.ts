@@ -6,15 +6,24 @@ var app = express();
 var httpSrv = http.createServer(app);
 var socketSrv = io(httpSrv);
 
+var clients:string[] = [];
 
 socketSrv.on('connection', function (socket) {
     console.log("Client connected: " + socket.client.id);
 
-    socketSrv.emit("player-joined", socket.client.id);
+    clients.push(socket.client.id);
+    socketSrv.emit("player-joined", clients);
 
     socket.on('position-changed', function (id: string, direction: number, jumping: boolean, moving: boolean, xPosition: number, yPosition: number) {
         console.log("User: " + id + " position changed: " + xPosition + "-" + yPosition);
         socketSrv.emit('position-changed', id, direction, jumping, moving, xPosition, yPosition);
+    });
+
+    socket.on("disconnect", function () {
+        var index = clients.indexOf(socket.client.id);
+        clients.splice(index, 1);
+
+        socketSrv.emit("player-disconnected", socket.client.id);
     });
 });
 

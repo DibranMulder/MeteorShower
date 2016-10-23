@@ -6,7 +6,7 @@
     public playerAnimation: PIXI.extras.MovieClip;
     public allDirectionsAnimations: PIXI.extras.MovieClip[] = [];
 
-    constructor(stage: PIXI.Container, x: number, y: number) {
+    constructor(public playerId: string, stage: PIXI.Container, x: number, y: number) {
         var texture = PIXI.Texture.fromImage("images/opposite_player.png").baseTexture;
         // 2 rows
         for (var i = 0; i < 2; i++) {
@@ -68,5 +68,10 @@
             this.playerAnimation.position.y = this.yPosition;
         }
         return true;
+    }
+
+    public quit() {
+        this.playerAnimation.stop();
+        this.playerAnimation.visible = false;
     }
 }

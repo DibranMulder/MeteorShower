@@ -1,15 +1,24 @@
 ﻿var socket = io("localhost:3000");
-var oppositePlayer: OppositePlayer;
-socket.on("player-joined", (id: string) => {
-    if (id != socket.id) {
-        oppositePlayer = new OppositePlayer(stage, 400, 265);
+var oppositePlayers: OppositePlayer[] = [];
+socket.on("player-joined", (clients: string[]) => {
+    for (var i = 0; i < clients.length; i++) {
+        if (clients[i] != socket.id && oppositePlayers[clients[i]] == null) {
+            oppositePlayers[clients[i]] = new OppositePlayer(clients[i], stage, 400, 265);
+        }
     }
 });
 socket.on("position-changed", (id: string, direction: number, jumping: boolean, moving: boolean, xPosition: number, yPosition: number) => {
-    if (id != socket.id && oppositePlayer != null) {
-        oppositePlayer.updatePlayer(direction, jumping, moving, xPosition, yPosition);
+    if (id != socket.id && oppositePlayers != null) {
+        oppositePlayers[id].updatePlayer(direction, jumping, moving, xPosition, yPosition);
     }
 });
+socket.on("player-disconnected", (id: string) => {
+    if (id != socket.id && oppositePlayers != null) {
+        oppositePlayers[id].quit();
+        delete oppositePlayers[id];
+    }
+});
+
 
 
 // create an new instance of a pixi stage

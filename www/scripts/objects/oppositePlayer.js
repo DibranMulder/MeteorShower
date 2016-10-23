@@ -1,5 +1,6 @@
 var OppositePlayer = (function () {
-    function OppositePlayer(stage, x, y) {
+    function OppositePlayer(playerId, stage, x, y) {
+        this.playerId = playerId;
         this.amountOfFrames = 2;
         // 12 is the fps
         this.msPerFrame = 1000 / 12;
@@ -57,6 +58,10 @@ var OppositePlayer = (function () {
             this.playerAnimation.position.y = this.yPosition;
         }
         return true;
+    };
+    OppositePlayer.prototype.quit = function () {
+        this.playerAnimation.stop();
+        this.playerAnimation.visible = false;
     };
     return OppositePlayer;
 }());

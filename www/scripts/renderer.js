@@ -44,8 +44,8 @@ function animate() {
         }
     }
     player.paint(animationAgeInMs);
-    if (oppositePlayer != null) {
-        oppositePlayer.paint(animationAgeInMs);
+    for (var p in oppositePlayers) {
+        oppositePlayers[p].paint(animationAgeInMs);
     }
     fpsmeter.tick();
     requestAnimationFrame(animate);
